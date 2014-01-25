@@ -22,3 +22,25 @@
 
 - name: Disable repo
   shell: yum-config-manager --disable epel
+
+# Install software
+- name: Basics
+  yum: name={{ item }} state=present
+  with_items:
+    - iotop
+    - smartmontools
+    - lftp
+    - jwhois
+    - ntp
+
+- name: Basics epel
+  yum: name={{ item }} state=present enablerepo=epel
+  with_items:
+    - htop
+    - pwgen
+    - clamav
+
+# Activate services
+- name: Services up
+  service: name=smartd state=started enabled=yes
+- service: name=ntpd state=started enabled=yes
