@@ -1,0 +1,7 @@
+---
+# this playbook apply initial setup.
+
+- hosts: all
+
+  roles:
+    - common

@@ -1,0 +1,5 @@
+---
+# Variables for all hosts
+
+path_dest: "/root/ansibledir"
+path_bin: "/root/bin"

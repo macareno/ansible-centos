@@ -1,0 +1,24 @@
+---
+# this playbook contains common plays to setup a Centos machine
+
+# Create directories to work with ansible
+- name: Init path_dest
+  file: path={{ path_dest }} state=directory
+
+# Update system
+- name: Update system "yum -u update"
+  yum: name=* state=latest
+
+- name: Install dependencies for yum-config-manager
+  yum: name=yum-utils state=present
+
+# Install EPEL
+- name: Upload epel file
+  copy: src={{ epel }} dest={{ path_dest }}
+
+- name: Install EPEL
+  yum: name={{ path_dest }}"/"{{ epel }} state=present disable_gpg_check=yes
+# TODO install only if not installed
+
+- name: Disable repo
+  shell: yum-config-manager --disable epel
