@@ -1,7 +1,7 @@
 ansible-centos
 ==============
 
-I'm learning to use Ansible and I want to automate the deployment of several applications on centos with Plesk Panel.
+I'm learning to use Ansible and I want to automate the deployment of several applications on centos with Plesk Panel 12.
 
 Command to execute ansible with vagrant:
 
