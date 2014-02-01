@@ -1,0 +1,19 @@
+# MAIL graph
+# -----------------------------------------------------------------------------
+<mail>
+	mta = postfix
+	greylist = milter-greylist
+	rigid = 0, 0, 0, 0, 0
+	limit = 1, 1000, 1000, 1000, 1000
+	<alerts>
+		delvd_enabled = n
+		delvd_timeintvl = 60
+		delvd_threshold = 100
+		delvd_script = /path/to/script.sh
+		mqueued_enabled = n
+		mqueued_timeintvl = 3600
+		mqueued_threshold = 100
+		mqueued_script = /path/to/script.sh
+	</alerts>
+</mail>
+

@@ -1,0 +1,8 @@
+---
+
+- name: config basics
+  file: path="{{ path_dest }}/config_monitorix" state=absent
+- file: path="{{ path_dest }}/config_monitorix" state=directory
+- copy: src=config_monitorix/000-init dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
+- copy: src=config_monitorix/010-common dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
+- copy: src=config_monitorix/900-end dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644

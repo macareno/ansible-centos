@@ -1,0 +1,14 @@
+---
+- name: install dependencies perl
+  yum: name={{ item }} state=present enablerepo=epel
+  with_items:
+    - perl-Date-Calc
+
+- name: install dependencies postfix
+  copy: src="{{ pflogsumm }}/pflogsumm.pl" dest=/usr/local/bin/pflogsumm mode=0755 owner=bin group=bin
+
+- name: config monitorix
+  copy: src=config_monitorix/020-mail dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
+
+- name: activate graph
+  lineinfile: dest="{{ path_dest }}/config_monitorix/000-init" regexp="^\s+mail\s+= n$" line='mail = y'

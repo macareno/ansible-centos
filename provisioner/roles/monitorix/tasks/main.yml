@@ -1,0 +1,29 @@
+---
+
+# Deploy Monitorix system monitoring tool
+
+- name: install monitorix
+  yum: name={{ item }} state=present enablerepo=epel
+  with_items:
+    - monitorix
+    - hddtemp
+
+- name: install dependencies
+  yum: name={{ item }} state=present
+  with_items:
+    - smartmontools
+
+
+- include: config_init.yml
+- include: mail.yml
+- include: serv.yml
+- include: ftp.yml
+
+- name: Final config
+  assemble: src="{{ path_dest }}/config_monitorix" dest=/etc/monitorix.conf owner=root group=root mode=0644
+  notify:
+    - restart monitorix
+
+
+# TODO: disk.rrd necesita una forma dinámica para detencar los discos
+# TODO: fs.rrd necesita una forma dinámica para detencar los discos

@@ -1,0 +1,93 @@
+# Monitorix - configuration file
+#
+# See monitorix.conf(5) manpage for a detailed description of each option.
+#
+
+title = All your monitor are belong to us
+hostname =
+theme_color = black
+refresh_rate = 150
+iface_mode = graph
+enable_zoom = y
+netstats_in_bps = n
+disable_javascript_void = n
+temperature_scale = c
+show_gaps = n
+global_zoom = 1
+
+base_dir = /usr/share/monitorix/
+base_lib = /var/lib/monitorix/
+base_url = /monitorix
+base_cgi = /monitorix-cgi
+
+<httpd_builtin>
+	enabled = y
+	host =
+	port = 8080
+	user = nobody
+	group = nobody
+	log_file = /var/log/monitorix-httpd
+	hosts_deny =
+	hosts_allow =
+	<auth>
+		enabled = n
+		msg = Monitorix: Restricted access
+		htpasswd = /var/lib/monitorix/htpasswd
+	</auth>
+</httpd_builtin>
+
+
+# Log files pathnames
+# -----------------------------------------------------------------------------
+log_file	= /var/log/monitorix
+secure_log	= /var/log/secure
+mail_log	= /usr/local/psa/var/log/maillog
+milter_gl	= /var/milter-greylist/greylist.db
+imap_log	= /var/log/imap
+hylafax_log	= /var/spool/hylafax/etc/xferfaxlog
+cups_log	= /var/log/cups/page_log
+ftp_log		= /usr/local/psa/var/log/access.log
+fail2ban_log	= /var/log/fail2ban.log
+spamassassin_log	= /var/log/maillog
+clamav_log	= /var/log/clamav/clamav.log
+cg_logdir	= /var/CommuniGate/SystemLogs/
+squid_log	= /var/log/squid/access.log
+
+imap_log_date_format = %b %d
+secure_log_date_format = %b %e
+
+
+# Graphs (de)activation
+# -----------------------------------------------------------------------------
+<graph_enable>
+	system		= y
+	kern		= y
+	proc		= y
+	hptemp		= n
+	lmsens		= n
+	nvidia		= n
+	disk		= n
+	fs		= n
+	net		= n
+	serv		= n
+	mail		= n
+	port		= n
+	user		= n
+	ftp		= n
+	apache		= n
+	nginx		= n
+	lighttpd	= n
+	mysql		= n
+	squid		= n
+	nfss		= n
+	nfsc		= n
+	bind		= n
+	ntp		= n
+	fail2ban	= n
+	icecast		= n
+	raspberrypi	= n
+	phpapc		= n
+	wowza		= n
+	int		= n
+</graph_enable>
+

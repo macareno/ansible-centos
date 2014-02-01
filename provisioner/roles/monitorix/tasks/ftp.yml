@@ -1,0 +1,13 @@
+---
+
+- name: config proftpd
+  file: state=touch path=/usr/local/psa/var/log/access.log owner=root group=root mode=0640
+- lineinfile: dest="/etc/proftpd.conf" regexp="^ExtendedLog " insertafter="^TransferLog " line="ExtendedLog /usr/local/psa/var/log/access.log AUTH,DIRS,READ,WRITE"
+  notify:
+    - restart proftpd
+
+- name: config monitorix
+  copy: src=config_monitorix/040-ftp dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
+
+- name: activate graph
+  lineinfile: dest="{{ path_dest }}/config_monitorix/000-init" regexp="^\s+ftp\s+= n$" line='ftp = y'

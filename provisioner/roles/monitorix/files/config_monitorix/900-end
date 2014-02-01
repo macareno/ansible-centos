@@ -1,0 +1,248 @@
+# Multihost
+# -----------------------------------------------------------------------------
+<multihost>
+	enabled = n
+	footer_url = y
+	graphs_per_row = 2
+	remotehost_list = server 1, server 2, server 3
+	<remotehost_desc>
+		0 = http://www.example.com,/monitorix,/monitorix-cgi
+		1 = http://10.0.0.1,/monitorix,/monitorix-cgi
+		2 = http://192.168.0.100:8080,/,/
+	</remotehost_desc>
+	groups = n
+	remotegroup_list = My Group
+	<remotegroup_desc>
+		0 = server 2, server 3
+	</remotegroup_desc>
+</multihost>
+
+
+# Email Reports
+# -----------------------------------------------------------------------------
+<emailreports>
+	enabled = n
+	url_prefix = http://localhost:8080
+	smtp_hostname = localhost
+	from_address = noreply@example.com
+	<daily>
+		enabled = n
+		graphs = system, fs
+		to = ace@example.com
+	</daily>
+	<weekly>
+		enabled = n
+		graphs = system, fs
+		to = gene@example.com
+	</weekly>
+	<monthly>
+		enabled = n
+		graphs = system, fs
+		to = paul@example.com
+	</monthly>
+	<yearly>
+		enabled = n
+		graphs = system, fs
+		to = peter@example.com
+	</yearly>
+</emailreports>
+
+
+# ========================================================================
+# ======  Probably you don't need to touch anything below this line ======
+# ========================================================================
+
+timeout = 15
+
+imgs_dir = imgs/
+usage_dir = usage/
+report_dir = reports/
+favicon = monitorixico.png
+logo_top = logo_top.png
+logo_bottom = logo_bot.png
+
+<theme>
+	<white>
+		main_bg		= FFFFFF
+		main_fg		= 000000
+		title_bg	= 777777
+		title_fg	= CCCC00
+		graph_bg	= CCCCCC
+		gap		= 000000
+	</white>
+	<black>
+		canvas		= 000000
+		back		= 101010
+		font		= C0C0C0
+		mgrid		= 80C080
+		grid		= 808020
+		frame		= 808080
+		arrow		= FFFFFF
+		shadea		= 404040
+		shadeb		= 404040
+		axis		= 101010
+		main_bg		= 000000
+		main_fg		= FFFFFF
+		title_bg	= 333333
+		title_fg	= 888800
+		graph_bg	= 888888
+		gap		= FFFFFF
+	</black>
+</theme>
+
+<graph_size>
+	main	= 450x150
+	medium	= 325x150
+	medium2	= 325x70
+	small	= 200x66
+	mini	= 183x66
+	tiny	= 110x40
+	zoom	= 800x300
+	remote	= 300x100
+</graph_size>
+
+graph_name = system, kern, proc, hptemp, lmsens, nvidia, disk, fs, net, serv, mail, port, user, ftp, apache, nginx, lighttpd, mysql, squid, nfss, nfsc, bind, ntp, fail2ban, icecast, raspberrypi, phpapc, wowza, int
+
+<graph_title>
+	system		= System load average and usage
+	kern		= Global kernel usage
+	proc		= Kernel usage per processor
+	hptemp		= HP ProLiant System Health
+	lmsens		= LM-Sensors and GPU temperatures
+	nvidia		= NVIDIA temperatures and usage
+	disk		= Disk drive temperatures and health
+	fs		= Filesystem usage and I/O activity
+	net		= Network traffic and usage
+	serv		= System services demand
+	mail		= Mail statistics
+	port		= Network port traffic
+	user		= Users using the system
+	ftp		= FTP statistics
+	apache		= Apache statistics
+	nginx		= Nginx statistics
+	lighttpd	= Lighttpd statistics
+	mysql		= MySQL statistics
+	squid		= Squid statistics
+	nfss		= NFS server statistics
+	nfsc		= NFS client statistics
+	bind		= BIND statistics
+	ntp		= NTP statistics
+	fail2ban	= Fail2ban statistics
+	icecast		= Icecast Streaming Media Server
+	raspberrypi	= Raspberry Pi sensor statistics
+	phpapc		= Alternative PHP Cache statistics
+	wowza		= Wowza Media Server
+	int		= Devices interrupt activity
+</graph_title>
+
+<graphs>
+	_system1	= System load
+	_system2	= Active processes
+	_system3	= Memory allocation
+	_kern1		= Kernel usage
+	_kern2		= Context switches and forks
+	_kern3		= VFS usage
+	_proc		= Processor
+	_hptemp1	= Temperatures 1
+	_hptemp2	= Temperatures 2
+	_hptemp3	= Temperatures 3
+	_lmsens1	= Core temperatures
+	_lmsens2	= Voltages
+	_lmsens3	= MB and CPU temperatures
+	_lmsens4	= Fan speeds
+	_lmsens5	= GPU temperatures
+	_nvidia1	= NVIDIA temperatures
+	_nvidia2	= CPU usage
+	_nvidia3	= Memory usage
+	_disk1		= Disk drives temperatures
+	_disk2		= Reallocated sector count
+	_disk3		= Current pending sector
+	_fs1		= Filesystems usage
+	_fs2		= Disk I/O activity
+	_fs3		= Time spent in I/O activity
+	_net1		= Network traffic
+	_net2		= Network packets
+	_net3		= Network errors
+	_serv1		= System services demand
+	_serv2		= IMAP and POP3 services
+	_serv3		= SMTP service
+	_mail1		= Mail statistics
+	_mail2		= Network traffic
+	_mail3		= Mails in queue
+	_mail4		= Queue size
+	_mail5		= Greylisting
+	_port		= Port
+	_user1		= Users logged in
+	_user2		= Samba users
+	_user3		= Netatalk users
+	_ftp1		= Commands usage
+	_ftp2		= New sessions
+	_ftp3		= FTP traffic
+	_apache1	= Apache workers
+	_apache2	= Apache CPU usage
+	_apache3	= Apache requests
+	_nginx1		= Nginx connections
+	_nginx2		= Nginx requests
+	_nginx3		= Nginx traffic
+	_lighttpd1	= Lighttpd workers
+	_lighttpd2	= Lighttpd traffic
+	_lighttpd3	= Lighttpd requests
+	_mysql1		= MySQL query types
+	_mysql2		= MySQL overall stats
+	_mysql3		= Table saturation and MyISAM
+	_mysql4		= MySQL queries
+	_mysql5		= MySQL connections
+	_mysql6		= MySQL traffic
+	_squid1		= Squid statistics 1
+	_squid2		= Squid statistics 2
+	_squid3		= Overall I/O
+	_squid4		= Memory usage
+	_squid5		= Store directory stats
+	_squid6		= IP cache stats
+	_squid7		= Network protocols usage
+	_squid8		= Client traffic
+	_squid9		= Server traffic
+	_nfss1		= NFS server stats 1
+	_nfss2		= NFS server stats 2
+	_nfss3		= NFS server stats 3
+	_nfss4		= Overall I/O
+	_nfss5		= Network layer
+	_nfss6		= RPC
+	_nfss7		= Thread utilization
+	_nfss8		= Read cache
+	_nfss9		= File handle cache
+	_nfsc1		= NFS client stats 1
+	_nfsc2		= NFS client stats 2
+	_nfsc3		= NFS client stats 3
+	_nfsc4		= NFS client stats 4
+	_nfsc5		= NFS client stats 5
+	_nfsc6		= RPC client stats
+	_bind1		= Incoming queries
+	_bind2		= Outgoing queries (_default)
+	_bind3		= Name server statistics
+	_bind4		= Resolver statistics (_default)
+	_bind5		= Cache DB RRsets (_default)
+	_bind6		= Memory usage
+	_bind7		= Task manager
+	_ntp1		= NTP timing stats
+	_ntp2		= Stratum level
+	_ntp3		= Codes
+	_fail2ban	= Fail2ban jails
+	_icecast1	= Current Listeners
+	_icecast2	= Bitrate
+	_raspberrypi1	= Clock frequency
+	_raspberrypi2	= Temperatures
+	_raspberrypi3	= Voltages
+	_phpapc1	= Memory usage
+	_phpapc2	= Hits & misses
+	_phpapc3	= File Cache
+	_wowza1		= Current connections
+	_wowza2		= Messages bytes rate
+	_wowza3		= Connections accepted
+	_wowza4		= Connections rejected
+	_wowza5		= Streams
+	_int1		= Interrupt activity
+	_int2		= Core activity
+	_int3		= Interrupt activity
+</graphs>
+

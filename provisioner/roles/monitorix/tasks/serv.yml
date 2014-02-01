@@ -1,0 +1,7 @@
+---
+
+- name: config serv
+  copy: src=config_monitorix/030-serv dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
+
+- name: activate graph
+  lineinfile: dest="{{ path_dest }}/config_monitorix/000-init" regexp="^\s+serv\s+= n$" line='serv = y'
