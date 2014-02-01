@@ -1,0 +1,5 @@
+---
+
+- name: config nginx
+
+# TODO: http://www.cyberciti.biz/faq/nginx-see-active-connections-connections-per-seconds/

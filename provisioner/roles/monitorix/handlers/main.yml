@@ -4,3 +4,6 @@
 
 - name: restart proftpd
   service: name=xinetd state=restarted
+
+  - name: restart apache
+  service: name=httpd state=restarted

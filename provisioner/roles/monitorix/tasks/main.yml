@@ -18,6 +18,8 @@
 - include: mail.yml
 - include: serv.yml
 - include: ftp.yml
+- include: apache.yml
+- include: nginx.yml
 
 - name: Final config
   assemble: src="{{ path_dest }}/config_monitorix" dest=/etc/monitorix.conf owner=root group=root mode=0644

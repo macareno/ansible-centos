@@ -12,6 +12,9 @@
 - name: Install dependencies for yum-config-manager
   yum: name=yum-utils state=present
 
+- name: selinux off
+  selinux: state=disabled
+
 # Install EPEL
 - name: Upload epel file
   copy: src={{ epel }} dest={{ path_dest }}
@@ -32,6 +35,7 @@
     - lftp
     - jwhois
     - ntp
+    - screen
 
 - name: Basics epel
   yum: name={{ item }} state=present enablerepo=epel
@@ -44,3 +48,10 @@
 - name: Services up
   service: name=smartd state=started enabled=yes
 - service: name=ntpd state=started enabled=yes
+
+# Install Plesk Panel
+#- name: Download Plesk installer
+#  get_url: dest={{ path_dest }} url="http://autoinstall.plesk.com/plesk-installer" mode=0740
+
+#- name: Excute installer 
+#  shell: executable={{ path_dest }}"/"plesk-installer --select-release-id PLESK_12_0_9 --all-versions –install-component base

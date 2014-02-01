@@ -11,3 +11,5 @@
 
 - name: activate graph
   lineinfile: dest="{{ path_dest }}/config_monitorix/000-init" regexp="^\s+ftp\s+= n$" line='ftp = y'
+
+  # TODO: Rotate log. Maybe i should use the same log that Plesk.
