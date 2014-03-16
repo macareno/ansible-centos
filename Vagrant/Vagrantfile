@@ -116,12 +116,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   chef.validation_client_name = "ORGNAME-validator"
 
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+  end
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.sudo = true
   end
 
-  # Port Forwarding
-  #config.vm.network :forwarded_port, host: 8443, guest: 8443
+  # Port forwarding
+  #config.vm.network :forwarded_port, host: 8443, guest: 80
 
 end
