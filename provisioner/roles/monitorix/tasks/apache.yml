@@ -2,8 +2,8 @@
 
 - name: config apache
   lineinfile: dest="/etc/httpd/conf/httpd.conf" regexp="^#ExtendedStatus On" line='ExtendedStatus On'
-- lineinfile: dest="/etc/httpd/conf/httpd.conf" regexp="^#<Location /server-status>" insertafter='<Location /server-status>SetHandler server-status</Location>'
-   notify: restart apache
+- lineinfile: dest="/etc/httpd/conf/httpd.conf" regexp="^#<Location /server-status>" line='<Location /server-status>SetHandler server-status</Location>'
+  #notify: restart apache
 
 - name: config monitorix
   copy: src=config_monitorix/050-apache dest="{{ path_dest }}/config_monitorix" owner=root group=root mode=0644
